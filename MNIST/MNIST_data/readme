@@ -1,0 +1,4 @@
+该文件夹里存放MNIST的数据集,这里没有上传本地的数据集.
+数据集的文件为:train-images-idx3-ubyte.gz,train-labels-idx1-ubyte.gz,t10k-images-idx3-ubyte.gz
+t10k-labels-idx1-ubyte.gz.这些文件的格式是idx格式,数据集下载官网:http://yann.lecun.com/exdb/mnist/
+数据集详解参考:http://blog.csdn.net/simple_the_best/article/details/75267863
