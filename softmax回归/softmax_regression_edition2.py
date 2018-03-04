@@ -23,13 +23,17 @@ sess.run(tf.initialize_all_variables())
 # 模型定义和损失函数
 y = tf.nn.softmax(tf.matmul(x, W) + b)
 # minibatch里的每张图片的交叉熵值都加起来
-cross_entropy = -tf.reduce_sum(y_*tf.log(y)) 
+# cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_*tf.log(y), reduction_indices=1)) 
+cross_entropy = (-tf.reduce_sum(y_*tf.log(y), reduction_indices=1))
 
 # 用数据来训练模型
 train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
-for i in range(1000):
-	batch = mnist.train.next_batch(50)
+for i in range(100):
+	batch = mnist.train.next_batch(3)
 	train_step.run(feed_dict={x:batch[0], y_:batch[1]})
+	print('y=', y.eval({x:batch[0], y_:batch[1]}), '\n', 'y_=', batch[1])
+	print('cost=', cross_entropy.eval({x:batch[0], y_:batch[1]}))
+	print('-------------------------------------------')
 
 # 评估模型
 correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
