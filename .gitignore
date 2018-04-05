@@ -1,2 +1,3 @@
-/MNIST/MNIST_data/
+/data/MNIST/MNIST_data/
+/data/cifar10/cifar-10-batches-bin
 /models
